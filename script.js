@@ -1,11 +1,7 @@
 /* Задания на урок:
 
-1) Удалить все рекламные блоки со страницы (правая часть сайта)
 
-2) Изменить жанр фильма, поменять "комедия" на "драма"
 
-3) Изменить задний фон постера с фильмом на изображение "bg.jpg". Оно лежит в папке img.
-Реализовать только при помощи JS
 
 4) Список фильмов на странице сформировать на основании данных из этого JS файла.
 Отсортировать их по алфавиту 
@@ -23,4 +19,36 @@ const movieDB = {
         "Скотт Пилигрим против..."
     ]
 };
+
+const advertise = document.querySelectorAll('.promo__adv img');
+const genre = document.querySelector('.promo__genre');
+const mainImg = document.querySelector('.promo__bg');
+const moviesList = document.querySelector('.promo__interactive-list');
+
+
+advertise.forEach(item => {
+    item.remove();
+})
+
+genre.innerHTML = 'drama';
+
+mainImg.style.background = "url('/img/bg.jpg')";
+mainImg.style.backgroundSize = "cover";
+
+function movieList (movies) {
+    moviesList.innerHTML = '';
+    movieDB.movies.sort();
+
+    return movies.map((item, i) => {
+        return `
+            <li class="promo__interactive-item">${i + 1} * ${item}
+                <div class="delete"></div>
+            </li>
+            ` ;  
+    }).join('');
+}
+const moviesInGallery = movieList(movieDB.movies);
+moviesList.insertAdjacentHTML('beforeend', moviesInGallery);
+
+
 
