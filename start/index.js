@@ -102,16 +102,6 @@ if(personalMovieDB.count < 10) {
 
 
 
-let x = 5;
-alert(x++); //6
-
-[] + false - null + true //false
-
-let y = 1;
-let x = y = 2;
-console.log(x); //2
-
-[] + 1 + 2; // 3
 
 
 
